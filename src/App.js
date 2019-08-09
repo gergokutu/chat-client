@@ -8,7 +8,8 @@ class App extends React.Component {
     messages: []
   }
   // it manages receiving requests from the server..
-  source = new EventSource('http://localhost:5000/stream')
+  // change the http://localhost:5000/stream to heroku server 
+  source = new EventSource('https://nameless-garden-13309.herokuapp.com/stream')
 
   componentDidMount() {
     // use fat arrow because of the .this
@@ -28,7 +29,8 @@ class App extends React.Component {
     // console.log('this.state.message', this.state.message)
 
     const response = await request
-      .post('http://localhost:5000/message')
+    // change the http://localhost:5000/message to heroku server 
+      .post('https://nameless-garden-13309.herokuapp.com/message')
       .send({ message: this.state.message })
     console.log('response test:', response)
 
