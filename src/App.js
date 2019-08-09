@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import * as request from 'superagent'
 
 class App extends React.Component {
   state = {
@@ -19,9 +20,14 @@ class App extends React.Component {
     }
   }
 
-  onSubmit = (event) => {
+  onSubmit = async (event) => {
     event.preventDefault()
     console.log('this.state.message', this.state.message)
+
+    const response = await request
+      .post('http://localhost:5000/message')
+      .send({message: this.state.message})
+      console.log('response test:', response)
   }
 
   onChange = (event) => {
