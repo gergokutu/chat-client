@@ -10,7 +10,7 @@ class App extends React.Component {
   }
   // it manages receiving requests from the server..
   // change the http://localhost:5000/stream to heroku server: https://nameless-garden-13309.herokuapp.com/stream  
-  source = new EventSource('https://nameless-garden-13309.herokuapp.com/stream')
+  source = new EventSource('http://localhost:5000/stream')
 
   componentDidMount() {
     // use fat arrow because of the .this
@@ -31,7 +31,7 @@ class App extends React.Component {
 
     const response = await request
     // change the http://localhost:5000/message to heroku server: https://nameless-garden-13309.herokuapp.com/message  
-      .post('https://nameless-garden-13309.herokuapp.com/message')
+      .post('http://localhost:5000/message')
       .send({ message: this.state.message })
     console.log('response test:', response)
 
@@ -46,7 +46,7 @@ class App extends React.Component {
   render() {
     const messages = this.state
       .messages
-      .map((message, index) => <p key={index}>{message}</p>)
+      .map((message, index) => <p key={index}>{message.text}</p>)
 
     // text input takes the value of the message
     const form = <form onSubmit={this.onSubmit}>
