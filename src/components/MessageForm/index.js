@@ -1,8 +1,9 @@
 import React from 'react'
 import * as request from 'superagent'
+import View from './view'
 
 export default class MessageForm extends React.Component {
-state= {message: ""}
+  state = { message: "" }
 
   onSubmit = async (event) => {
     event.preventDefault()
@@ -23,14 +24,11 @@ state= {message: ""}
   }
 
   render() {
-    return <div>
-      <h3>New messages</h3>
-  
-      <form onSubmit={this.onSubmit}>
-        <input type='text' value={this.state.message} onChange={this.onChange} />
-        <button type='submit'>Send</button>
-      </form>
-    </div>
+    return <View
+      onSubmit={this.onSubmit}
+      value={this.state.message}
+      onChange={this.onChange}
+    />
   }
 }
 
