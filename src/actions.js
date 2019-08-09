@@ -1,9 +1,9 @@
-export const ALL_MESSAGES = 'ALL_MESSAGE'
+export const ALL_CHANNELS = 'ALL_CHANNELS'
 export const SET_NAME = 'SET_NAME'
 
-export function allMessages(payload) {
+export function allChannels(payload) {
   return {
-    type: ALL_MESSAGES,
+    type: ALL_CHANNELS,
     payload
   }
 }
