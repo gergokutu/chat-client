@@ -3,7 +3,6 @@ import MessageForm from './components/MessageForm'
 import UserForm from './components/UserForm'
 import { allChannels } from './actions'
 import { connect } from 'react-redux'
-import { url } from './constatnts'
 
 class App extends React.Component {
   state = { message: "" }

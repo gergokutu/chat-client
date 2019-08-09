@@ -1,7 +1,6 @@
 import React from 'react'
 import View from './view'
 import * as request from 'superagent'
-import {url} from '../../constants'
 
 export default class ChannelForm extends React.Component {
   state = { name: "" }
