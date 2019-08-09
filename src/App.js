@@ -77,7 +77,7 @@ class App extends React.Component {
 
 
     return <main>
-      <UserForm/>
+      <UserForm user={this.props.user} />
       <MessageForm user={this.props.user} />
       {messages}
     </main>

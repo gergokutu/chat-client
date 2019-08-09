@@ -25,6 +25,7 @@ class UserForm extends React.Component {
       onSubmit={this.onSubmit}
       value={this.state.name}
       onChange={this.onChange}
+      user={this.props.user}
     />
   }
 }

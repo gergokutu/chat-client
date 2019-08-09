@@ -2,13 +2,18 @@ import React from 'react'
 
 export default function View(props) {
 
-    const {onSubmit, value, onChange} = props
+    const {onSubmit, value, onChange, user} = props
 
     return <div>
       <h3>Pick your name</h3>
   
       <form onSubmit={onSubmit}>
-        <input type='text' value={value} onChange={onChange} />
+        <input 
+        type='text' 
+        value={value} 
+        onChange={onChange}
+        placeholder={user}
+        />
         <button type='submit'>Send</button>
       </form>
     </div>
