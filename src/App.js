@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageForm from './components/MessageForm'
+import UserForm from './components/UserForm'
 import { allMessages } from './actions'
 import { connect } from 'react-redux'
 
@@ -60,7 +61,7 @@ class App extends React.Component {
       // .state
       .props
       .messages
-      .map((message, index) => <p key={index}>{message.text}</p>)
+      .map((message, index) => <p key={index}>{message.user}: {message.text}</p>)
 
     // moved to a container » components/MessageForm/index.js
     // text input takes the value of the message
@@ -76,7 +77,8 @@ class App extends React.Component {
 
 
     return <main>
-      <MessageForm/>
+      <UserForm/>
+      <MessageForm user={this.props.user} />
       {messages}
     </main>
   }
@@ -84,7 +86,8 @@ class App extends React.Component {
 
 function mapStateToStore(state) {
   return {
-    messages: state.messages
+    messages: state.messages,
+    user: state.user
   }
 }
 

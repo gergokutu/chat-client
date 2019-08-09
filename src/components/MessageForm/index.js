@@ -12,7 +12,10 @@ export default class MessageForm extends React.Component {
     await request
       // change the http://localhost:5000/message to heroku server: https://nameless-garden-13309.herokuapp.com/message  
       .post('http://localhost:5000/message')
-      .send({ message: this.state.message })
+      .send({
+        message: this.state.message,
+        user: this.props.user 
+      })
 
     this.setState({ message: "" })
   }
