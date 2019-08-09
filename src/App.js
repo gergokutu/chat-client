@@ -1,14 +1,15 @@
 import React from 'react';
-import './App.css';
 import * as request from 'superagent'
 
 class App extends React.Component {
   state = {
+    // sent by users
     message: "",
+    // messages from the server
     messages: []
   }
   // it manages receiving requests from the server..
-  // change the http://localhost:5000/stream to heroku server 
+  // change the http://localhost:5000/stream to heroku server: https://nameless-garden-13309.herokuapp.com/stream  
   source = new EventSource('https://nameless-garden-13309.herokuapp.com/stream')
 
   componentDidMount() {
@@ -29,7 +30,7 @@ class App extends React.Component {
     // console.log('this.state.message', this.state.message)
 
     const response = await request
-    // change the http://localhost:5000/message to heroku server 
+    // change the http://localhost:5000/message to heroku server: https://nameless-garden-13309.herokuapp.com/message  
       .post('https://nameless-garden-13309.herokuapp.com/message')
       .send({ message: this.state.message })
     console.log('response test:', response)
@@ -47,6 +48,7 @@ class App extends React.Component {
       .messages
       .map((message, index) => <p key={index}>{message}</p>)
 
+    // text input takes the value of the message
     const form = <form onSubmit={this.onSubmit}>
       <input type='text' value={this.state.message} onChange={this.onChange} />
       <button type='submit'>Send</button>
