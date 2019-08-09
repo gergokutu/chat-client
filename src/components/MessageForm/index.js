@@ -8,20 +8,16 @@ export default class MessageForm extends React.Component {
   onSubmit = async (event) => {
     event.preventDefault()
 
-
     await request
-      // change the http://localhost:5000/message to heroku server: https://nameless-garden-13309.herokuapp.com/message  
-      .post('http://localhost:5000/message')
+      .post('https://nameless-garden-13309.herokuapp.com/message')
       .send({
         message: this.state.message,
         user: this.props.user 
       })
-
     this.setState({ message: "" })
   }
 
   onChange = (event) => {
-    // we changed to redux
     const { value } = event.target
     this.setState({ message: value })
   }

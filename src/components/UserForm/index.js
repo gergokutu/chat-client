@@ -8,14 +8,11 @@ class UserForm extends React.Component {
 
   onSubmit = async (event) => {
     event.preventDefault()
-
     this.props.setName(this.state.name)
-
     this.setState({ name: "" })
   }
 
   onChange = (event) => {
-    // we changed to redux
     const { value } = event.target
     this.setState({ name: value })
   }
