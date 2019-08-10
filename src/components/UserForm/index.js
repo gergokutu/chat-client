@@ -1,23 +1,26 @@
 import React from 'react'
 import View from './view'
-import {setName} from '../../actions'
-import {connect} from 'react-redux'
+import { setName } from '../../actions'
+import { connect } from 'react-redux'
 
 class UserForm extends React.Component {
-  state = { name: "" }
+  state = { name: '' }
 
-  onSubmit = async (event) => {
+  onSubmit = (event) => {
     event.preventDefault()
+
     this.props.setName(this.state.name)
-    this.setState({ name: "" })
+
+    this.setState({ name: '' })
   }
 
   onChange = (event) => {
     const { value } = event.target
+
     this.setState({ name: value })
   }
 
-  render() {
+  render () {
     return <View
       onSubmit={this.onSubmit}
       value={this.state.name}
@@ -31,4 +34,4 @@ const mapDispatchToProps = {
   setName
 }
 
-export default connect (null, mapDispatchToProps)(UserForm)
+export default connect(null, mapDispatchToProps)(UserForm)

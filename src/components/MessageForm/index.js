@@ -1,28 +1,34 @@
 import React from 'react'
 import * as request from 'superagent'
 import View from './view'
+import { url } from '../../constants'
 
 export default class MessageForm extends React.Component {
-  state = { message: "" }
+  state = {
+    message: ''
+  }
 
   onSubmit = async (event) => {
     event.preventDefault()
 
     await request
-      .post('https://nameless-garden-13309.herokuapp.com/message')
+      .post(`${url}/message`)
       .send({
         message: this.state.message,
-        user: this.props.user 
+        user: this.props.user,
+        channelId: this.props.channelId
       })
-    this.setState({ message: "" })
+
+    this.setState({ message: '' })
   }
 
   onChange = (event) => {
     const { value } = event.target
+
     this.setState({ message: value })
   }
 
-  render() {
+  render () {
     return <View
       onSubmit={this.onSubmit}
       value={this.state.message}
@@ -30,4 +36,3 @@ export default class MessageForm extends React.Component {
     />
   }
 }
-
